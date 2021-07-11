@@ -1,0 +1,32 @@
+:root {
+    --content-color: #202124;
+    --content-font: sans-serif;
+    --content-font-size: 11pt;
+    --content-margins: 0 1.3em;
+    --link-color: #3367D6;
+
+}
+
+.b {
+    color: var(--content-color);
+    text-decoration: none;
+}
+
+.b:hover {
+    cursor: help;
+}
+
+.b:visited {
+    color: var(--content-color);
+}
+
+a {
+    color: var(--link-color);
+}
+
+body {
+    color: var(--content-color);
+    font-family: var(--content-font);
+    font-size: var(--content-font-size);
+    margin: var(--content-margins);
+}

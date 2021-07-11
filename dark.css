@@ -1,0 +1,21 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #5f6368;
+        --content-color: #e8eaed;
+        --link-color: #8ab4f8;
+    }
+    
+    a {
+        color: var(--link-color);
+    }
+  
+    body {
+        background-color: var(--bg-color);
+        color: var(--content-color);
+    }
+  
+    time {
+        color: var(--content-color);
+    }
+  
+}
