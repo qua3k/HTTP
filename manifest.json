@@ -14,12 +14,8 @@
         "default_popup": "popup.html"
     },
 
-    "background": {
-        "service_worker": "background.js"
-    },
-
     "content_security_policy": {
-        "extension_pages": "default-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+        "extension_pages": "default-src 'none'; style-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
     },
 
     "declarative_net_request": {
