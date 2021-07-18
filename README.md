@@ -1,5 +1,5 @@
 # HTTP
 
-HTTP is an extension that is meant to upgrade requests to HTTPS using the `declarativeNetRequest` API.
+HTTP is an extension that upgrades requests to HTTPS using the `declarativeNetRequest` API.
 
-Will be deprecated once [HTTPS-only mode](https://chromium-review.googlesource.com/c/chromium/src/+/2956486) rolls out.
+Will be deprecated by [HTTPS-only mode](https://blog.chromium.org/2021/07/increasing-https-adoption.html).

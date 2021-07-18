@@ -12,10 +12,6 @@
     text-decoration: none;
 }
 
-.b:hover {
-    cursor: help;
-}
-
 .b:visited {
     color: var(--content-color);
 }
