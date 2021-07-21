@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Allowlist | HTTP</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="stylesheets/new.css">
+        <link rel="stylesheet" href="stylesheets/dark.css" media="(prefers-color-scheme: dark)">
+        <base target="_blank">
+    </head>
+    <body>
+        <h1>HTTP</h1>
+        <h2 id="allowlist">Allowlist <a class="anchor" href="#allowlist">#</a></h2>
+        <p>Allowlisted domains will not be upgraded to HTTPS. This presents an immense security issue as it presents the ability for other parties to see and modify traffic at will.</p>
+        <p>For this reason allowlist rules are scoped per browsing session and are automatically cleared upon exit.</p>
+        <textarea id="allowlist"> </textarea>
+        <label for="allowlist">The allowlist saves automatically.</label>
+        <script src="/scripts/update.js"></script>
+    </body>
+</html>

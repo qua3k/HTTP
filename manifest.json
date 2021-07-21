@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "HTTP",
-    "version": "1.0.1",
+    "version": "2.0.0",
 
     "description": "A simple extension using the declarativeNetRequest to ensure you only connect over HTTPS",
 
@@ -15,7 +15,7 @@
     },
 
     "content_security_policy": {
-        "extension_pages": "default-src 'none'; style-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+        "extension_pages": "default-src 'none'; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; require-trusted-types-for 'script'; trusted-types 'none'"
     },
 
     "declarative_net_request": {
@@ -25,6 +25,8 @@
             "path": "rules.json"
         }]
     },
+
+    "options_page": "options.html",
 
     "permissions": [
         "declarativeNetRequest"
