@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "HTTP",
-    "version": "1.0.0",
+    "version": "1.0.1",
 
     "description": "A simple extension using the declarativeNetRequest to ensure you only connect over HTTPS",
 
@@ -10,7 +10,7 @@
     },
 
     "action": {
-        "default_title": "You are have the sekur",
+        "default_title": "you are have the sekur",
         "default_popup": "popup.html"
     },
 
@@ -19,13 +19,11 @@
     },
 
     "declarative_net_request": {
-        "rule_resources": [
-            {
-                "id": "rules",
-                "enabled": true,
-                "path": "rules.json"
-            }
-        ]
+        "rule_resources" : [{
+            "id": "rules",
+            "enabled": true,
+            "path": "rules.json"
+        }]
     },
 
     "permissions": [

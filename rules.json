@@ -1,21 +1,11 @@
-[
-    {
-        "id" : 1,
-        "priority": 2,
-        "action" : { "type" : "upgradeScheme" },
-        "condition" : {
-            "urlFilter" : "*",
-            "resourceTypes" : ["main_frame"]
-        }
+[{
+    "id" : 1,
+    "priority": 1,
+    "action" : {
+        "type" : "upgradeScheme"
     },
-    
-    {
-        "id" : 2,
-        "priority": 1,
-        "action" : { "type" : "block" },
-        "condition" : {
-            "urlFilter" : "|http*",
-            "resourceTypes" : ["main_frame"]
-        }
+    "condition" : {
+        "urlFilter" : "http://*",
+        "resourceTypes" : ["main_frame"]
     }
-]
+}]

@@ -1,0 +1,18 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        --anchor-color: #58a6ff6c;
+        --background-color: #000;
+        --border-color: #fff;
+        --color: #c9d1d9;
+        --link-color: #58a6ff;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        border-color: #21262d;
+    }
+}
