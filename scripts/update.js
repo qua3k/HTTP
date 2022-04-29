@@ -1,25 +1,58 @@
+// @ts-nocheck
 "use strict";
 
 const textarea = document.querySelector("textarea");
+const rules = "dynamicRules";
 
-(textarea).value = localStorage.getItem("dynamicRules");
+// listen for changes in other documents
+window.onstorage = (e) => {
+    if (e.key === rules) {
+        textarea.value = e.newValue ?? "";
+    }
+};
 
-textarea.addEventListener("change", () => {
-    localStorage.setItem("dynamicRules", (textarea).value);
-    const domainArray = textarea.value.split("\n");
-    domainArray.forEach((d, i) => {
-        const domainIndex = i + 2;
-        chrome.declarativeNetRequest.updateSessionRules({
-            addRules: [{
-                "id": domainIndex,
-                "priority": 100,
-                "action": { "type" : "allow"},
-                "condition": {
-                    "urlFilter" : d,
-                    "resourceTypes" : ["main_frame"]
-                }
-            }],
-            removeRuleIds: [domainIndex]
-        });
+async function removeRules() {
+    const sessionRules = new Array();
+    await chrome.declarativeNetRequest.getSessionRules().then((set) => {
+        set.forEach((r) => { sessionRules.push(r.id); });
     });
+    chrome.declarativeNetRequest.updateSessionRules({ removeRuleIds: sessionRules });
+}
+
+function createRule(index, url) {
+    return {
+        "id": index,
+        "priority": 100,
+        "action": { "type": "allow" },
+        "condition": {
+            "isUrlFilterCaseSensitive": false,
+            "urlFilter": url,
+            "resourceTypes": ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+        }
+    };
+}
+
+textarea.addEventListener("change", async () => {
+    await removeRules();
+    const domains = textarea.value.split(/\s+/);
+    const sessionRules = new Array();
+    domains.forEach((domain, index) => {
+        let url;
+        try {
+            if (!domain.startsWith("http://") || !domain.startsWith("https://")) {
+                domain = "http://" + domain;
+            }
+            url = new URL(domain);
+        }
+        catch {
+            return;
+        }
+        sessionRules.push(createRule(index+1, url.hostname));
+    });
+    chrome.declarativeNetRequest.updateSessionRules({
+        addRules: sessionRules
+    });
+    localStorage.setItem(rules, textarea.value);
 });
+
+textarea.value = localStorage.getItem(rules) ?? "";
