@@ -1,11 +1,24 @@
 [{
-    "id" : 1,
+    "id": 1,
     "priority": 1,
     "action" : {
         "type" : "upgradeScheme"
     },
     "condition" : {
-        "urlFilter" : "http://*",
-        "resourceTypes" : ["main_frame"]
+        "isUrlFilterCaseSensitive": false,
+        "urlFilter" : "|http:*",
+        "resourceTypes" : ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
+    }
+},
+{
+    "id": 2,
+    "priority": 1,
+    "action" : {
+        "type" : "upgradeScheme"
+    },
+    "condition" : {
+        "isUrlFilterCaseSensitive": false,
+        "urlFilter" : "|ws:*",
+        "resourceTypes" : ["main_frame", "sub_frame", "stylesheet", "script", "image", "font", "object", "xmlhttprequest", "ping", "csp_report", "media", "websocket", "other"]
     }
 }]
