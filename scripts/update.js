@@ -16,7 +16,7 @@ async function removeRules() {
     await chrome.declarativeNetRequest.getSessionRules().then((set) => {
         set.forEach((r) => { sessionRules.push(r.id); });
     });
-    chrome.declarativeNetRequest.updateSessionRules({ removeRuleIds: sessionRules });
+    return sessionRules
 }
 
 function createRule(index, url) {
@@ -33,7 +33,7 @@ function createRule(index, url) {
 }
 
 textarea.addEventListener("change", async () => {
-    await removeRules();
+    const removedRules = await removeRules();
     const domains = textarea.value.split(/\s+/);
     const sessionRules = new Array();
     domains.forEach((domain, index) => {
@@ -50,7 +50,8 @@ textarea.addEventListener("change", async () => {
         sessionRules.push(createRule(index+1, url.hostname));
     });
     chrome.declarativeNetRequest.updateSessionRules({
-        addRules: sessionRules
+        addRules: sessionRules,
+        removeRuleIds: removedRules
     });
     localStorage.setItem(rules, textarea.value);
 });
