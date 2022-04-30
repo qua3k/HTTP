@@ -35,6 +35,9 @@ function createRule(index, url) {
 textarea.addEventListener("change", async () => {
     const removedRules = await removeRules();
     const domains = textarea.value.split(/\s+/);
+    if (domains.length > chrome.declarativeNetRequest.MAX_NUMBER_OF_DYNAMIC_AND_SESSION_RULES) {
+        domains.length = chrome.declarativeNetRequest.MAX_NUMBER_OF_DYNAMIC_AND_SESSION_RULES;
+    }
     const sessionRules = new Array();
     domains.forEach((domain, index) => {
         let url;
